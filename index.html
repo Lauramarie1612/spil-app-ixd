@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Spil Café" />
+    <meta name="description" content="Project Template" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <title>Movie App</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Spil Café</h1>
+    </header>
+    <main>
+      <!-- Filter Bar -->
+      <section class="filterbar">
+        <input id="search-input" type="search" placeholder="Søg spil..." />
+        <select id="genre-select">
+          <option value="all">Alle genrer</option>
+          <!-- Genre options will be populated from JS -->
+        </select>
+        <select id="sort-select">
+          <option value="title">Sortér: Titel (A-Å)</option>
+          <option value="year">Sortér: År (nyeste)</option>
+        </select>
+      </section>
+      <!-- Movie List -->
+      <section id="movie-list">
+        <!-- Movie items will be displayed here - from JS -->
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+      <p>© Laura Marie Bech Jensen</p>
+    </footer>
+
+    <!-- Movie Detail Modal -->
+    <dialog id="movie-dialog">
+      <form method="dialog">
+        <button id="close-dialog" aria-label="Close">✕</button>
+        <div id="dialog-content">
+          <!-- Movie details will be injected here -->
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
