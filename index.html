@@ -1,51 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Spil Café" />
-    <meta name="description" content="Project Template" />
+    <title>Movie App</title>
     <link rel="stylesheet" href="app.css" />
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
-    <title>Movie App</title>
   </head>
+
 
   <body>
     <header>
-      <h1>Spil Café</h1>
+      <h1>Spilcaféen</h1>
     </header>
+
+
     <main>
-      <!-- Filter Bar -->
+      <!-- Filter bar med alle filtreringsmuligheder -->
       <section class="filterbar">
-        <input id="search-input" type="search" placeholder="Søg spil..." />
-        <select id="genre-select">
-          <option value="all">Alle genrer</option>
-          <!-- Genre options will be populated from JS -->
-        </select>
-        <select id="sort-select">
-          <option value="title">Sortér: Titel (A-Å)</option>
-          <option value="year">Sortér: År (nyeste)</option>
-        </select>
+        <!-- Øverste række: Søg og genre -->
+        <div class="filter-row-main">
+          <div class="filter-group search-group">
+            <label for="search-input">🔍 Søg</label>
+            <input type="text" id="search-input" placeholder="Søg efter spil..." />
+          </div>
+
+
+          <div class="filter-group">
+            <label for="genre-select">🎭 Genre</label>
+            <select id="genre-select">
+              <option value="all">Alle genrer</option>
+              <!-- Genrer indsættes dynamisk via JavaScript -->
+            </select>
+          </div>
+
+
+          <div class="filter-group">
+            <label for="sort-select">📊 Sortering</label>
+            <select id="sort-select">
+              <option value="none">Ingen sortering</option>
+              <option value="anbefaling">Anbefaling</option>
+              <option value="title">Titel (A-Å)</option>
+              <option value="nyeste">Nyeste (højeste først)</option>
+            </select>
+          </div>
+        </div>
+          <!-- Ryd alle filtre knap -->
+          <button id="clear-filters" class="clear-btn">
+            <span class="btn-icon">🗑️</span>
+            <span class="btn-text">Ryd filtre</span>
+          </button>
+        </div>
       </section>
-      <!-- Movie List -->
-      <section id="movie-list">
-        <!-- Movie items will be displayed here - from JS -->
+
+
+      <!-- Games grid -->
+      <section id="game-list" class="game-grid">
+        <!-- Spil vil blive indsat her dynamisk -->
       </section>
     </main>
+
+
     <!-- Footer -->
     <footer>
-      <p>© Laura Marie Bech Jensen</p>
     </footer>
 
-    <!-- Movie Detail Modal -->
-    <dialog id="movie-dialog">
+
+    <!-- game Detail Modal -->
+    <dialog id="game-dialog">
       <form method="dialog">
         <button id="close-dialog" aria-label="Close">✕</button>
         <div id="dialog-content">
-          <!-- Movie details will be injected here -->
+          <!-- Movie details will be injected here via JavaScript -->
         </div>
       </form>
     </dialog>
+
 
     <script src="app.js"></script>
   </body>
