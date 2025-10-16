@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+    <link rel="stylesheet" href="app.css" />
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+  </head>
+
+
+  <body>
+    <header>
+      <h1>Spilcaféen</h1>
+    </header>
+
+
+    <main>
+      <!-- Filter bar med alle filtreringsmuligheder -->
+      <section class="filterbar">
+        <!-- Øverste række: Søg og genre -->
+        <div class="filter-row-main">
+          <div class="filter-group search-group">
+            <label for="search-input">🔍 Søg</label>
+            <input type="text" id="search-input" placeholder="Søg efter spil..." />
+          </div>
+
+
+          <div class="filter-group">
+            <label for="genre-select">🎭 Genre</label>
+            <select id="genre-select">
+              <option value="all">Alle genrer</option>
+              <!-- Genrer indsættes dynamisk via JavaScript -->
+            </select>
+          </div>
+
+
+          <div class="filter-group">
+            <label for="sort-select">📊 Sortering</label>
+            <select id="sort-select">
+              <option value="none">Ingen sortering</option>
+              <option value="anbefaling">Anbefaling</option>
+              <option value="title">Titel (A-Å)</option>
+              <option value="nyeste">Nyeste (højeste først)</option>
+            </select>
+          </div>
+        </div>
+          <!-- Ryd alle filtre knap -->
+          <button id="clear-filters" class="clear-btn">
+            <span class="btn-icon">🗑️</span>
+            <span class="btn-text">Ryd filtre</span>
+          </button>
+        </div>
+      </section>
+
+
+      <!-- Games grid -->
+      <section id="game-list" class="game-grid">
+        <!-- Spil vil blive indsat her dynamisk -->
+      </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+    </footer>
+
+
+    <!-- game Detail Modal -->
+    <dialog id="game-dialog">
+      <form method="dialog">
+        <button id="close-dialog" aria-label="Close">✕</button>
+        <div id="dialog-content">
+          <!-- Movie details will be injected here via JavaScript -->
+        </div>
+      </form>
+    </dialog>
+
+
+    <script src="app.js"></script>
+  </body>
+</html>

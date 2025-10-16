@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&display=swap');
+
+
+/* Mobile først */
+#movie-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+
+
+
+/* Tablet - 2 kolonner */
+@media (min-width: 600px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+
+
+/* Desktop - 3 kolonner */
+@media (min-width: 992px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+
+
+/* Store skærme - 4 kolonner */
+@media (min-width: 1400px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+
+body {
+  margin: 0;
+  background-color: #c4c4c4;
+  font-family: 'IM Fell DW Pica', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.container {
+  text-align: center;
+}
+
+
+#logo {
+  width: 150px;
+  margin-top: auto;
+  margin-bottom: 3%;
+}
+
+
+h1 {
+  font-size: 28px;
+  color: #000;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+
+.dropdown select {
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  appearance: none;
+  text-align: center;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+
+.dropdown::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+
+#terning {
+  width: 70%;
+margin-top: 3%;
+}
