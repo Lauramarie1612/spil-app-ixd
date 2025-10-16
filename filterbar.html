@@ -1,82 +1,106 @@
 <!DOCTYPE html>
 <html lang="da">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App</title>
-    <link rel="stylesheet" href="app.css" />
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
-  </head>
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>Spilcaféen – Filtrer</title>
+ <link rel="stylesheet" href="filterbar.css" />
+</head>
+<body>
+ <div class="wrap">
+   <!-- TOP BAR -->
+   <header class="bar">
+     <div class="bar-left">
+       <img src="img/spillogomindre.png" alt="Spilcaféen" class="logo-img">
+     </div>
 
 
-  <body>
-    <header>
-      <h1>Spilcaféen</h1>
-    </header>
+     <h1 class="title">Filtrer</h1>
 
 
-    <main>
-      <!-- Filter bar med alle filtreringsmuligheder -->
-      <section class="filterbar">
-        <!-- Øverste række: Søg og genre -->
-        <div class="filter-row-main">
-          <div class="filter-group search-group">
-            <label for="search-input">🔍 Søg</label>
-            <input type="text" id="search-input" placeholder="Søg efter spil..." />
-          </div>
+     <button class="back" id="backBtn" title="Tilbage">
+       <img src="img/pil-tilbage.png" alt="Tilbage" class="pil-icon">
+     </button>
+   </header>
 
 
-          <div class="filter-group">
-            <label for="genre-select">🎭 Genre</label>
-            <select id="genre-select">
-              <option value="all">Alle genrer</option>
-              <!-- Genrer indsættes dynamisk via JavaScript -->
-            </select>
-          </div>
+   <!-- INDHOLD -->
+   <main class="content" id="form">
+     <!-- Antal spillere -->
+     <section class="section">
+       <div class="search">
+         <input id="players" type="number" min="1" inputmode="numeric" placeholder="Antal spillere..." />
+       </div>
+     </section>
 
 
-          <div class="filter-group">
-            <label for="sort-select">📊 Sortering</label>
-            <select id="sort-select">
-              <option value="none">Ingen sortering</option>
-              <option value="anbefaling">Anbefaling</option>
-              <option value="title">Titel (A-Å)</option>
-              <option value="nyeste">Nyeste (højeste først)</option>
-            </select>
-          </div>
-        </div>
-          <!-- Ryd alle filtre knap -->
-          <button id="clear-filters" class="clear-btn">
-            <span class="btn-icon">🗑️</span>
-            <span class="btn-text">Ryd filtre</span>
-          </button>
-        </div>
-      </section>
+     <!-- Varighed -->
+     <section class="section">
+       <label class="h" for="duration">Varighed:</label>
+       <div class="row">
+         <span class="hint">5min.</span>
+         <span class="hint">120min.</span>
+       </div>
+       <div class="range-wrap">
+         <input id="duration" class="range" type="range" min="5" max="120" value="30" />
+       </div>
+       <div class="row"><span class="hint">Valgt:</span><span class="range-value" id="durationVal">30 min.</span></div>
+     </section>
 
 
-      <!-- Games grid -->
-      <section id="game-list" class="game-grid">
-        <!-- Spil vil blive indsat her dynamisk -->
-      </section>
-    </main>
+     <!-- Aldersgrænse -->
+     <section class="section">
+       <label class="h" for="age">Aldersgrænse:</label>
+       <div class="row">
+         <span class="hint">5 år</span>
+         <span class="hint">18+</span>
+       </div>
+       <div class="range-wrap">
+         <input id="age" class="range" type="range" min="5" max="18" value="8" />
+       </div>
+       <div class="row"><span class="hint">Valgt:</span><span class="range-value" id="ageVal">8 år</span></div>
+     </section>
 
 
-    <!-- Footer -->
-    <footer>
-    </footer>
+     <!-- Kategori (kun UI) -->
+     <section class="section">
+       <button type="button" class="chev">
+         <span>Kategori</span>
+       </button>
+     </section>
 
 
-    <!-- game Detail Modal -->
-    <dialog id="game-dialog">
-      <form method="dialog">
-        <button id="close-dialog" aria-label="Close">✕</button>
-        <div id="dialog-content">
-          <!-- Movie details will be injected here via JavaScript -->
-        </div>
-      </form>
-    </dialog>
+     <!-- Sprog -->
+     <section class="section">
+       <span class="h">Sprog</span>
+       <div class="chips" id="languages">
+         <button type="button" class="chip" data-value="Dansk">Dansk</button>
+         <button type="button" class="chip" data-value="Engelsk">Engelsk</button>
+       </div>
+     </section>
 
 
-    <script src="app.js"></script>
-  </body>
+     <!-- Sværhedsgrad -->
+     <section class="section">
+       <span class="h">Sværhedsgrad:</span>
+       <div class="levels" id="levels">
+         <button type="button" class="level" data-level="Begynder">Begynder</button>
+         <button type="button" class="level" data-level="Øvet">Øvet</button>
+         <button type="button" class="level" data-level="Avanceret">Avanceret</button>
+       </div>
+     </section>
+
+     <div class="cta">
+       <button class="btn" id="submit">Vis spil</button>
+       <button class="link-reset" id="reset" type="button">Nulstil filter</button>
+     </div>
+
+
+     <div class="spacer"></div>
+   </main>
+ </div>
+
+
+ <script src="filterbar.js"></script>
+</body>
 </html>

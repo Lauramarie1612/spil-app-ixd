@@ -1,4 +1,13 @@
 "use strict";
+   
+const filterButton = document.getElementById("filterBtn");
+
+    // Sørg for at knappen findes, før vi tilføjer eventlistener
+    if (filterButton) {
+      filterButton.addEventListener("click", function() {
+        window.location.href = "filterbar.html";
+      });
+    }
 
 // Global variabel til alle spil
 let allGames = [];
@@ -9,14 +18,17 @@ function initApp() {
   getGames();
 
   // Event listeners for alle filtre
-  document.querySelector("#search-input").addEventListener("input", filterGames);
-  document.querySelector("#genre-select").addEventListener("change", filterGames);
-  document.querySelector("#sort-select").addEventListener("change", filterGames);
-  document.querySelector("#year-from").addEventListener("input", filterGames);
-  document.querySelector("#year-to").addEventListener("input", filterGames);
-  document.querySelector("#rating-from").addEventListener("input", filterGames);
-  document.querySelector("#rating-to").addEventListener("input", filterGames);
-  document.querySelector("#clear-filters").addEventListener("click", clearAllFilters);
+document.querySelector("#search-input").addEventListener("input", filterGames);
+document.querySelector("#genre-select").addEventListener("change", filterGames);
+document.querySelector("#language-select")?.addEventListener("change", filterGames);
+document.querySelector("#difficulty-select")?.addEventListener("change", filterGames);
+document.querySelector("#sort-select").addEventListener("change", filterGames);
+document.querySelector("#playtime-from")?.addEventListener("input", filterGames);
+document.querySelector("#playtime-to")?.addEventListener("input", filterGames);
+document.querySelector("#rating-from").addEventListener("input", filterGames);
+document.querySelector("#rating-to").addEventListener("input", filterGames);
+document.querySelector("#clear-filters").addEventListener("click", clearAllFilters);
+
 }
 
 // #2: Fetch games from JSON file
@@ -135,7 +147,7 @@ function showGameModal(game) {
   </div>
 
   <div class="game-logo">
-   <img src="img/spillogo.png" alt="Spilcaféen logo">
+   <img src="img/spillogosort.png" alt="Spilcaféen logo">
   </div>
 </div>
 `;
@@ -148,26 +160,47 @@ function showGameModal(game) {
 function clearAllFilters() {
   console.log("🗑️ Rydder alle filtre");
 
+  // Always-present fields
   document.querySelector("#search-input").value = "";
   document.querySelector("#genre-select").value = "all";
   document.querySelector("#sort-select").value = "none";
-  document.querySelector("#year-from").value = "";
-  document.querySelector("#year-to").value = "";
   document.querySelector("#rating-from").value = "";
   document.querySelector("#rating-to").value = "";
+
+  // New optional fields (reset only if they exist in the HTML)
+  const lang = document.querySelector("#language-select");
+  if (lang) lang.value = "all";
+
+  const diff = document.querySelector("#difficulty-select");
+  if (diff) diff.value = "all";
+
+  const ptFrom = document.querySelector("#playtime-from");
+  if (ptFrom) ptFrom.value = "";
+
+  const ptTo = document.querySelector("#playtime-to");
+  if (ptTo) ptTo.value = "";
+
+  // Old optional fields (safe to leave if still in DOM)
+  const yearFrom = document.querySelector("#year-from");
+  if (yearFrom) yearFrom.value = "";
+
+  const yearTo = document.querySelector("#year-to");
+  if (yearTo) yearTo.value = "";
 
   filterGames();
 }
 
-// #8: Komplet filtrering
+
 function filterGames() {
   console.log("🔄 ===== STARTER FILTRERING =====");
 
   const searchValue = document.querySelector("#search-input").value.toLowerCase();
   const genreValue = document.querySelector("#genre-select").value;
+  const languageValue = document.querySelector("#language-select")?.value || "all";
+  const difficultyValue = document.querySelector("#difficulty-select")?.value || "all";
   const sortValue = document.querySelector("#sort-select").value;
-  const yearFrom = Number(document.querySelector("#year-from").value) || 0;
-  const yearTo = Number(document.querySelector("#year-to").value) || 9999;
+  const playtimeFrom = Number(document.querySelector("#playtime-from")?.value) || 0;
+  const playtimeTo = Number(document.querySelector("#playtime-to")?.value) || 9999;
   const ratingFrom = Number(document.querySelector("#rating-from").value) || 0;
   const ratingTo = Number(document.querySelector("#rating-to").value) || 10;
 
@@ -187,9 +220,21 @@ function filterGames() {
     );
   }
 
-  if (yearFrom > 0 || yearTo < 9999) {
+  if (languageValue !== "all") {
     filteredGames = filteredGames.filter(game =>
-      game.year >= yearFrom && game.year <= yearTo
+      game.language === languageValue
+    );
+  }
+
+  if (difficultyValue !== "all") {
+    filteredGames = filteredGames.filter(game =>
+      game.difficulty === difficultyValue
+    );
+  }
+
+  if (playtimeFrom > 0 || playtimeTo < 9999) {
+    filteredGames = filteredGames.filter(game =>
+      game.playtime >= playtimeFrom && game.playtime <= playtimeTo
     );
   }
 
@@ -199,16 +244,20 @@ function filterGames() {
     );
   }
 
-  if (sortValue === "title") {
-    filteredGames.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sortValue === "year") {
-    filteredGames.sort((a, b) => b.year - a.year);
+  if (sortValue === "playtime") {
+    filteredGames.sort((a, b) => a.playtime - b.playtime);
   } else if (sortValue === "rating") {
     filteredGames.sort((a, b) => b.rating - a.rating);
+  } else if (sortValue === "difficulty") {
+    filteredGames.sort((a, b) => a.difficulty.localeCompare(b.difficulty));
   }
 
   displayGames(filteredGames);
 }
+
+
+
+
 
 // Start appen
 initApp();

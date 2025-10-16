@@ -7,45 +7,71 @@
     <link rel="stylesheet" href="spilsidesheet.css" />
   </head>
   <body>
-    <header>
-      <h1>Spilcaféen</h1>
-    </header>
+<header class="navbar">
+  <img class="logo" src="img/spillogomindre.png" alt="Spilcaféen logo">
+
+  <div class="search-header">
+     <input type="text" id="search-input" placeholder="Søg efter spil..." />
+  </div>
+
+  <button id="filterBtn" class="filter-btn">
+    <img src="img/Filtrer-tegn.svg" alt="Filtrer ikon" class="filter-icon">
+    <span>Filtrer</span>
+  </button>
+</header>
+
 
     <main>
-      <!-- Filter bar med alle filtreringsmuligheder -->
-      <div class="filterbar">
-        <input type="text" id="search-input" placeholder="Søg efter film..." />
+    <!-- Filter bar med alle filtreringsmuligheder -->
+<div class="filterbar">
+  <input type="text" id="search-input" placeholder="Søg efter spil..." />
 
-        <select id="genre-select">
-          <option value="all">Alle genrer</option>
-          <!-- Genrer indsættes dynamisk via JavaScript -->
-        </select>
+  <select id="genre-select">
+    <option value="all">Alle genrer</option>
+  </select>
 
-        <!-- År range filter -->
-        <div class="year-filter">
-          <label for="year-from">Fra år:</label>
-          <input type="number" id="year-from" placeholder="2000" min="1900" max="2030" />
-          <label for="year-to">Til år:</label>
-          <input type="number" id="year-to" placeholder="2025" min="1900" max="2030" />
-        </div>
+  <!-- Sprog -->
+ <select id="language-select">
+  <option value="all">Alle sprog</option>
+  <option value="Dansk">Dansk</option>
+  <option value="Engelsk">Engelsk</option>
+</select>
 
-        <!-- Rating range filter -->
-        <div class="rating-filter">
-          <label for="rating-from">Fra rating:</label>
-          <input type="number" id="rating-from" placeholder="0" min="0" max="10" step="0.1" />
-          <label for="rating-to">Til rating:</label>
-          <input type="number" id="rating-to" placeholder="10" min="0" max="10" step="0.1" />
-        </div>
+  <!-- Sværhedsgrad -->
+  <select id="difficulty-select">
+  <option value="all">Alle sværhedsgrader</option>
+  <option value="Let">Let</option>
+  <option value="Mellem">Mellem</option>
+  <option value="Svær">Svær</option>
+</select>
 
-        <select id="sort-select">
-          <option value="none">Ingen sortering</option>
-          <option value="title">Sortér: Titel (A-Å)</option>
-          <option value="year">Sortér: År (nyeste først)</option>
-          <option value="rating">Sortér: Rating (højeste først)</option>
-        </select>
 
-        <button id="clear-filters" class="clear-btn">🗑️ Ryd alle filtre</button>
-      </div>
+  <!-- Spilletid -->
+  <div class="playtime-filter">
+    <label for="playtime-from">Spilletid (min):</label>
+    <input type="number" id="playtime-from" placeholder="0" min="0" />
+    <label for="playtime-to">til</label>
+    <input type="number" id="playtime-to" placeholder="180" min="0" />
+  </div>
+
+  <!-- Rating range filter -->
+  <div class="rating-filter">
+    <label for="rating-from">Fra rating:</label>
+    <input type="number" id="rating-from" placeholder="0" min="0" max="10" step="0.1" />
+    <label for="rating-to">Til rating:</label>
+    <input type="number" id="rating-to" placeholder="10" min="0" max="10" step="0.1" />
+  </div>
+
+  <select id="sort-select">
+    <option value="none">Ingen sortering</option>
+    <option value="playtime">Sortér: Spilletid (kortest først)</option>
+    <option value="rating">Sortér: Rating (højeste først)</option>
+    <option value="difficulty">Sortér: Sværhedsgrad (A-Å)</option>
+  </select>
+
+  <button id="clear-filters" class="clear-btn">🗑️ Ryd alle filtre</button>
+</div>
+
 
       <!-- Movie grid -->
       <section id="movie-list" class="movie-grid">
@@ -55,7 +81,7 @@
 
    <!-- Footer -->
     <footer>
-      <p>troll</p>
+      <p>Spilcaféen, Aarhus Vestergade</p>
     </footer>
 
     <!-- Movie Detail Modal -->

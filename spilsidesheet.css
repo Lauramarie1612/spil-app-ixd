@@ -1,9 +1,66 @@
-/* =====================
-   DARK MODE CSS VARIABLES
-   ===================== */
+/* Basis reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* midter alt vandret */
+  gap: 40px; /* afstand mellem elementerne */
+  padding: 20px 0;
+  background-color: white;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  height: 90px;
+  width: auto;
+}
+
+/* Søgefelt */
+
+.search-header {
+  border: #b4221d
+}
+
+.search-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.placeholder {
+  color: #b4221d;
+  font-size: 20px;
+}
+
+/* Filtrer-knap */
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #b4221d;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 25px;
+  padding: 14px 28px;
+  cursor: pointer;
+}
+
+.filter-icon {
+  width: 22px;
+  height: 22px;
+}
+
 :root {
   /* Colors */
-  --primary: #264c59;
+  --primary: #ffffff;
   --secondary: #acc6c9;
   --primary-light: #42535c;
   --secondary-light: #3c4043;
@@ -13,8 +70,8 @@
   --text-light: #dadce0;
 
   /* Backgrounds - Dark Mode */
-  --bg: #202124;
-  --bg-card: #3c4043;
+  --bg: #ffffff;
+  --bg-card: #ffffff;
 
   /* Semantic */
   --success: #34a853;
@@ -42,12 +99,6 @@ body {
     sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background: linear-gradient(
-    135deg,
-    var(--bg) 0%,
-    #1a1a1a 50%,
-    var(--primary-light) 100%
-  );
   color: var(--text);
   min-height: 100vh;
 }
@@ -62,50 +113,110 @@ main {
 }
 
 /* =====================
-   FILTERBAR (SØG/SORT/FILTER)
+   BEAUTIFUL FILTER BAR
    ===================== */
 .filterbar {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 1rem;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
 }
 
+/* Input & select shared styles */
+.filterbar input,
+.filterbar select {
+  background: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  min-width: 140px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.filterbar input:focus,
+.filterbar select:focus {
+  outline: none;
+  border-color: #b4221d;
+  box-shadow: 0 0 0 3px rgba(180, 34, 29, 0.2);
+}
+
+/* Search field should grow */
 #search-input {
   flex: 1;
-  min-width: 120px;
+  min-width: 200px;
 }
 
-#search-input,
-#genre-select,
-#sort-select {
-  background: var(--bg-card);
-  color: var(--text);
-  border: 1px solid var(--secondary);
-  border-radius: var(--radius);
-  padding: 0.75rem 1rem;
+/* Number inputs smaller for compact look */
+.playtime-filter input,
+.rating-filter input {
+  width: 90px;
+}
+
+/* Labels */
+.playtime-filter label,
+.rating-filter label {
+  font-size: 0.9rem;
+  color: #444;
+  font-weight: 500;
+}
+
+/* Range filters inline */
+.playtime-filter,
+.rating-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Clear button */
+#clear-filters {
+  background-color: #b4221d;
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.7rem 1rem;
   font-size: 1rem;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-}
-
-#search-input:focus,
-#genre-select:focus,
-#sort-select:focus {
-  outline: 2px solid var(--secondary);
-  border-color: var(--secondary);
-}
-
-#search-input::placeholder {
-  color: var(--text-light);
-  opacity: 1;
-}
-
-#genre-select,
-#sort-select {
-  min-width: 160px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
+
+#clear-filters:hover {
+  background-color: #911a16;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .filterbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .playtime-filter,
+  .rating-filter {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .filterbar input,
+  .filterbar select,
+  #clear-filters {
+    width: 100%;
+  }
+}
+
 
 /* =====================
    HEADER & FOOTER
@@ -132,7 +243,7 @@ header h1 {
 }
 
 footer {
-  background: var(--primary);
+  background: #B4221D;
   color: var(--text);
   text-align: center;
   padding: 2rem 1rem;
@@ -707,4 +818,45 @@ footer {
   width: 80px;
   height: auto;
   opacity: 0.9;
+}
+
+/* --- Rød filtersektion (Spilcafé-rød) --- */
+.filterbar{
+  background: #B4221D;              /* rød baggrund */
+  border: 1px solid #B4221D;         /* skjul kant mod baggrunden */
+  box-shadow: 0 8px 18px rgba(180,34,29,.18);
+}
+
+/* Tekst/labels inde i den røde bar skal være lyse */
+.filterbar label{
+  color: #fff !important;
+}
+
+/* Inputs/selects forbliver hvide for kontrast – ingen ændring nødvendig */
+.filterbar input,
+.filterbar select{
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+/* Fokus (bevar rød accent) */
+.filterbar input:focus,
+.filterbar select:focus{
+  outline: none;
+  border-color: #B4221D;
+  box-shadow: 0 0 0 3px rgba(180,34,29,.25);
+}
+
+/* "Ryd alle filtre" skiller sig ud på rød baggrund */
+#clear-filters{
+  background: #fff;
+  color: #B4221D;
+  border: 1px solid #fff;
+}
+#clear-filters:hover{
+  background: #fff0f0;
+  color: #8E1A18;
+  border-color: #fff;
+  transform: translateY(-2px);
 }
