@@ -135,7 +135,7 @@ function showGameModal(game) {
   </div>
 
   <div class="game-logo">
-    <img src="/movie-app/img/spilcafelogo.png" alt="Spilcaféen logo">
+   <img src="img/spillogo.png" alt="Spilcaféen logo">
   </div>
 </div>
 `;

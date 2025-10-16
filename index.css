@@ -2,7 +2,7 @@
 
 
 /* Mobile først */
-#movie-list {
+#games-list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
@@ -14,7 +14,7 @@
 
 /* Tablet - 2 kolonner */
 @media (min-width: 600px) {
-  #movie-list {
+  #games-list {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -24,7 +24,7 @@
 
 /* Desktop - 3 kolonner */
 @media (min-width: 992px) {
-  #movie-list {
+  #games-list {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
@@ -34,7 +34,7 @@
 
 /* Store skærme - 4 kolonner */
 @media (min-width: 1400px) {
-  #movie-list {
+  #games-list {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
