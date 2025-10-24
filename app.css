@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Reset og basislayout */
 body {
   margin: 0;
@@ -71,4 +72,45 @@ body {
 
 .bounce {
   animation: bounce 0.4s ease;
+=======
+/* Mobile først */
+#movie-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+
+/* Tablet - 2 kolonner */
+@media (min-width: 600px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* Desktop - 3 kolonner */
+@media (min-width: 992px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+/* Store skærme - 4 kolonner */
+@media (min-width: 1400px) {
+  #movie-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+
+/* Alternativ: Automatisk tilpasning */
+#movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+>>>>>>> 5a2dba3d1ed61e7ea15950d21b96f5713c596556
 }
